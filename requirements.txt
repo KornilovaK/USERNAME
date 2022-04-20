@@ -1,0 +1,3 @@
+This web application requires the installation of django:
+  1) It needs to install pip.
+  2) Then (or if you've already installed pip) you should run **pip3 install Django** in your terminal to install Django.
