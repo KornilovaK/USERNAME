@@ -1,0 +1,460 @@
+@font-face {
+	font-family: "Evolventa"; 
+	src: url("../font/Evolventa-Regular.ttf") format("truetype"); 
+}
+* {
+	font-family: "Evolventa";
+	box-sizing: border-box; 
+}
+body {
+	overflow-y: scroll;
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  	background: linear-gradient(180deg, #F3F9DC, #81490E);
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+  border-radius: 10px;
+}
+aside {
+	width: 20%;
+	z-index: 1;
+	position: fixed;
+	padding: 1%;
+	background-color: #fff;
+	border-bottom-right-radius: 10px;
+	border-bottom: 2px solid black;
+}
+#side > p {
+	font-size: 28px;
+  color: #000;
+  font-weight: bold;
+}
+#main {
+	width: 100%;
+}
+#header {
+	display: flex;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	padding: 3vh 3vw;
+	align-items: center;
+}
+.header2 {
+	animation-name: bg;
+	animation-delay: 0.1s;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+@keyframes bg {
+	100% {
+		background-color: black;
+	}
+}
+#name {
+	width: 20%;
+	margin: 0 auto;
+	height: 1em;
+}
+.header2_bg {
+	animation-name: header2_bg;
+	animation-delay: 0.4s;
+	animation-duration: 0.1s;
+	animation-fill-mode: forwards;
+	animation-direction: alternate;
+}
+@keyframes header2_bg {
+	100% {
+		background-image: url('../img/4.png');
+		background-size: contain;
+		background-position: center center;
+    background-repeat: no-repeat;
+	}
+}
+#page1_bg {
+	background-image: url('../img/2.jpg');
+	background-attachment: fixed;
+}
+#page2_bg {
+	background-image: url('../img/9.jpg');
+}
+#page3_bg {
+	background-color: ghostwhite;
+}
+#page4_bg {
+	background-image: url('../img/10.jpg');
+}
+.page_bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	width: 100%;
+}
+.page {
+	width: 60vw;
+	height: 100vh;
+	margin: 0 auto;
+}
+#page2_main {
+	display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.a {
+	align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+	display: flex;
+	height: 80vh;
+	margin: 10vh auto;
+	width: 30vw;
+}
+.a > p, #button3 > p {
+	font-size: 20px;
+	line-height: 28px;
+}
+.a > #button_make > #button2 > p {
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: bold;
+}
+.b {
+	display: flex;
+}
+#page1 {
+	padding-top: 10vh;
+}
+#main_header {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.spans {
+	height: 0.1em;
+	text-align: center;
+	background-color: whitesmoke;
+	border: 1px solid whitesmoke;
+}
+#menu {
+  display: flex;
+	height: 1em;
+}
+#button_make {
+	position: relative;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+#button_menu {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	width: 2em;
+	justify-content: space-between;
+}
+#button_menu:hover > * {
+	background-color: ghostwhite;
+}
+#button_menu:hover > #span2 {
+	animation-name: transform2;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+@keyframes transform2 {
+	0% {
+		width: 100%;
+	}
+	100% {
+		width: 1em;
+		margin: 0 auto;
+	}
+}
+#button_menu:hover > #span1, 
+#button_menu:hover > #span3 {
+	animation-name: transform13;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+@keyframes transform13 {
+	0% {
+		width: 100%;
+	}
+	100% {
+		width: 1.5em;
+		margin: 0 auto;
+	}
+}
+#button {
+  border: solid 2px #fff;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+	display: flex;
+  align-items: baseline;
+}
+#button:hover {
+	animation-name: font;
+	animation-delay: 0.1s;
+	animation-duration: 0.7s;
+	animation-fill-mode: forwards;
+}
+@keyframes font {
+	100% {
+		background-color: #fff;
+		color: black;
+	}
+}
+#button3:hover {
+	animation-name: font3;
+	animation-delay: 0.1s;
+	animation-duration: 0.7s;
+	animation-fill-mode: forwards;
+}
+@keyframes font3 {
+	100% {
+		background-color: black;
+		color: ghostwhite;
+	}
+}
+#button_text {
+	width: 15vw;
+  text-align: center;
+  line-height: normal;
+}
+#button2 {
+  border: solid 2px #000;
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+	display: flex;
+  align-items: baseline;
+}
+#button2:hover {
+	animation-name: font2;
+	animation-delay: 0.1s;
+	animation-duration: 0.7s;
+	animation-fill-mode: forwards;
+}
+@keyframes font2 {
+	100% {
+		background-color: #000;
+		color: #fff;
+	}
+}
+#button_text2 {
+	font-size: 20px;
+  font-weight: bold;
+	margin: 6px 8px;
+  line-height: normal;
+}
+p {
+	margin: 0 auto;
+}
+#side {
+	height: 100%;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	display: flex;
+	justify-content: space-evenly;
+}
+.aside {
+}
+#side_close > img{
+	width: 100%;
+}
+#side_close {
+	width: 20%;
+}
+#side > p:hover {
+	opacity: 0.5;
+}
+#side_close:hover > img {
+	color: black;
+	filter: drop-shadow(0 0 3px rgba(100,0,0,0.5));
+}
+.button_make {
+	height: auto;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+#events_page {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+  flex-wrap: nowrap;
+}
+.qpage {
+	width: 50vw;
+	background-color: ghostwhite;
+}
+.qpages2 {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#qpage1 {
+	background-image: url('../img/20.jpg');
+}
+#qpage2 {
+	background-image: url('../img/18.jpg');
+	background-position-y: bottom;
+}
+.hpage {
+	height: 50vh;
+	display: flex;
+	flex-direction: row;
+  flex-wrap: nowrap;
+}
+.qpages1 {
+	width: 100%;
+	height: 100%;
+	padding: 10%;
+	display: flex;
+  align-items: center;
+  justify-content: center
+}
+footer {
+	height: 5vh;
+	text-align: center;
+	background-color: black;
+	color: whitesmoke;
+	font-weight: bold;
+	font-size: 20px;
+	position-y: bottom;
+}
+#last_page {
+	height: 95vh;
+	border-top: 2px solid black;
+	padding: 10vh 10vw;
+}
+#reservation, #reserve {
+	height: 95vh;
+	padding: 10vh 10vw;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+.not_reserved, .reserved {
+	height: 20vh;
+}
+#tables {
+	display: flex;
+	width: 40vw;
+	flex-wrap: wrap
+}
+#reserve {
+	display: flex;
+	align-items: center
+}
+.table:hover > .not_reserved {
+	filter: drop-shadow(0 0 3px rgba(100,0,0,0.5));
+}
+#menu_pages {
+	display: flex;
+  height: 95vh;
+  padding: 10vh 10vw;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.category {
+  box-shadow: 0 0 1rem 0 rgb(41 39 39 / 20%);
+  padding: 0 7vw;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.category:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(0, 0, 0, .5);
+  filter: blur(10px);
+  margin: -20px;
+}
+.category > strong {
+  font-size: 24px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+#menu_pages {
+  background: url('../../static/img/17.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.menu_page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.menu_page > p {
+  font-size: 22px;
+  line-height: 24px;
+  color: whitesmoke;
+}
+.pp {
+	margin: 0;
+  font-size: 50px;
+  background: #2E2F45;
+  font-weight: bold;
+  color: ghostwhite;
+  display: table;
+  mix-blend-mode: multiply;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #ffd790, #ffd700);
+  text-align: center;
+}
+.ppp {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.input {
+	padding: 4px 0;
+	width: 20%;
+	background-color: whitesmoke;
+	margin-top: 2vh;
+	text-align: center;
+	border-radius: 3px;
+	border-color: ghostwhite;
+}
+.input:hover {
+	box-shadow: inset 0 0 2px rgba(0, 0, 0, .5);
+}

@@ -1,0 +1,175 @@
+{% extends "shop/layout.html" %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('header').classList.add('header2');
+            document.getElementById('name').classList.add('header2_bg');
+            if (document.querySelector('.table')) {
+                let tables = document.querySelectorAll('.table');
+                tables.forEach(table => {
+                    table.addEventListener('click', function() {
+                        num = document.getElementById('your_table')
+                        element = document.getElementById('making');
+
+                        if (table.querySelector('img').className === 'not_reserved') {
+                            num.innerHTML = table.id;
+                            if (element.firstElementChild.innerHTML === 'Already reserved') {
+                                element.removeChild(element.firstElementChild);
+                            } else if (element.childNodes[1].innerHTML === 'Already reserved') {
+                                element.removeChild(element.childNodes[1]);
+                            }
+                        } else {
+                            if (element.firstElementChild.innerHTML !== 'Already reserved') {
+                                message = document.createElement('p');
+                                message.innerHTML = 'Already reserved';
+                                document.getElementById('making').prepend(message);
+                                num.innerHTML = '';                                
+                            }
+                        }
+                    });
+                });                
+            }
+            if (document.getElementById('maken')) {
+                document.getElementById('maken_form').onsubmit = function() {
+                    name = document.getElementById('fname').value;
+                    email = document.getElementById('femail').value;
+                    number = document.getElementById('your_table').innerHTML;
+                    time = document.getElementById('time').innerHTML;
+                    fetch('/reservation/make', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            number: number,
+                            time: time
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(result => {
+                            console.log(result);
+                            element = document.getElementById('making');
+                            if (result.error) {
+                                if (element.firstElementChild.innerHTML === 'Not all fields are filled out correctly') {
+                                    element.removeChild(element.firstElementChild);
+                                } else if (element.childNodes[1].innerHTML === 'Not all fields are filled out correctly') {
+                                    element.removeChild(element.childNodes[1]);
+                                }
+                                message = document.createElement('p');
+                                message.innerHTML = result.error;
+                                message.id = 'p';
+                                element.prepend(message);
+                                
+                            } else  if (result.message) {
+                                document.location.href = "/";
+                            }
+                        });
+                    document.getElementById('fname').value = '';
+                    document.getElementById('femail').value = '';
+
+                    return false;
+                };
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block aside %}
+    <aside id="aside" style="display: none;">
+        <div id="side_close">
+            <img src="../../static/img/5.png">
+        </div>
+        <section id="side">
+            <p><a href="{% url 'index' %}">Home</a></p>
+        </section>
+    </aside>
+{% endblock %}
+
+{% block body %}
+
+    {% if tables %}
+        <div id="reserve">
+            <div id="tables">
+                {% with numbers='12345678' %}
+                    {% for number in numbers %}
+                        {% for table in tables %}
+                            <div id='{{ number }}' class="table">
+                                {% if table.number|slugify != number %}
+                                    <img class="not_reserved" src="../../static/img/11.png">
+                                {% else %}
+                                    <img class="reserved" src="../../static/img/11.png">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+            <div id="making">
+                <h2>Make reservation</h2>
+                <p id="time">{{dt}}</p>
+                <form action="{% url 'make' %}" method="post" id="maken_form">
+                    {% csrf_token %}
+                    <label>Your Name</label>
+                    <input id="fname" type="text" name="name">
+                    <label>Your Email</label>
+                    <input id="femail" type="text" name="email">
+                    <p >Your table: <strong id="your_table"></strong></p>
+                    <input style="width: 100%;" class="input" id="maken" type="submit" value="Make Reservation">
+                </form>
+
+            </div>
+        </div>
+    {% elif tnumbers %}
+        
+        <div id="reserve">
+            <div id="tables">
+                {% for tnumber in tnumbers %}
+                    <div id='{{ tnumber }}' class="table">
+                        <img class="not_reserved" src="../../static/img/11.png">
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="making">
+                <h2>Make reservation</h2>
+                <p id="time">{{dt}}</p>
+                <form action="{% url 'index' %}" id="maken_form">
+                    <label>Your Name</label>
+                    <input id="fname" type="text" name="name">
+                    <label>Your Email</label>
+                    <input id="femail" type="text" name="email">
+                    <p >Your table: <strong id="your_table"></strong></p>
+                    <input style="width: 100%;" id="maken" class="input" type="submit" value="Make Reservation">
+                </form>
+
+            </div>
+        </div>
+
+
+    {% else %}
+        <div id="reservation">
+            {% if message %}
+                <p id="message">{{ message }}</p>
+            {% endif %}
+            <form action="{% url 'reservation' %}"  method="post" id="form">
+                {% csrf_token %}
+                <h3>Date</h3>
+                <p>Example: yyyy mm(or m) dd(or d)</p>
+                <label>Day</label>
+                <input name="day" type="text">
+                <label>Month</label>
+                <input name="month" type="text">
+                <label>Year</label>
+                <input name="year" type="text">
+
+                <h3>Time</h3>
+                <p>Examle: hh(or h)</p>
+                <label>Hour</label>
+                <input name="hour" type="text">
+
+                <input class="input" style="width: 20%" type="submit" value="Check availability">
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

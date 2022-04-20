@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Coffee house "CARE"{% endblock %}</title>
+        <link rel="shortcut icon" href="../../static/img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../../static/shop/style.css">
+        <script>
+            window.onscroll = () => {
+                let window_scroll = document.getElementById('header');
+                let name_img = document.getElementById('name');
+
+                if (window.scrollY >= 0.1 * window.innerHeight) {
+                    window_scroll.classList.add('header2');
+                    name_img.classList.add('header2_bg');
+                } else {
+                    if (window_scroll.className === 'header2') {
+                        window_scroll.classList.remove('header2');
+                        name_img.classList.remove('header2_bg');
+                    }
+                }
+            };
+            document.addEventListener('DOMContentLoaded', function() {
+                let aside = document.getElementById('aside');
+                let nav_button = document.getElementById('button_menu');
+                nav_button.addEventListener('click', function() {
+                    aside.style.display = 'block';
+                });
+
+                let nav_button2 = document.getElementById('side_close');
+                nav_button2.addEventListener('click', function() {
+                    aside.style.display = 'none';
+                });
+            })
+        </script>
+        {% block script %}{% endblock %}
+
+    </head>
+    <body style="margin:0">
+        <header id="header">
+            <div id="main_header">
+                <div id="menu">
+                    <div id="button_menu">
+                        <span class="spans" id="span1"></span>
+                        <span class="spans" id="span2"></span>
+                        <span class="spans" id="span3"></span>
+                    </div>
+                </div>
+                <div id="name"></div>
+            </div>
+        </header>
+        {% block aside %}{% endblock %}
+        {% block body %}
+        {% endblock %}
+        <footer>
+            All materials were taken from the open sources
+        </footer>
+    </body>
+</html>

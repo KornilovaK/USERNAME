@@ -1,0 +1,56 @@
+{% extends "shop/layout.html" %}
+
+{% block title %}Menu{% endblock %}
+
+{% block script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('header').classList.add('header2');
+            document.getElementById('name').classList.add('header2_bg');
+            categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
+                category.firstElementChild.addEventListener('click', function() {
+                    element = category.lastElementChild;
+                    if (element.className === 'closed') {
+                        element.style.display = 'block';
+                        element.className ='opened';
+                    } else  if (element.className === 'opened') {
+                        element.style.display = 'none';
+                        element.className = 'closed';
+                    }
+                })
+            })
+        });
+    </script>
+{% endblock %}
+
+{% block aside %}
+    <aside id="aside" style="display: none;">
+        <div id="side_close">
+            <img src="../../static/img/5.png">
+        </div>
+        <section id="side">
+            <p><a href="{% url 'index' %}">Home</a></p>
+        </section>
+    </aside>
+{% endblock %}
+
+{% block body %}
+    <div id="menu_pages">
+        {% for category in categories %}
+            <div id="{{ category }}" class="category">
+                <strong>{{ category }}</strong>
+                <div class="closed" style="display: none;">
+                    {% for menu_page in menu %}
+                        {% if menu_page.category == category %}
+                            <div class="menu_page" >
+                                <p>{{ menu_page.name }}</p>
+                                <p>{{ menu_page.cost }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "shop/layout.html" %}
+
+
+{% block aside %}
+    <aside id="aside" style="display: none;">
+        <div id="side_close">
+            <img src="../../static/img/5.png">
+        </div>
+        <section id="side">
+
+            <p><a href="#">Home</a></p>
+            <p><a href="#about_page">About</a></p>
+            <p><a href="#menu_page">Menu</a></p>
+            <p><a href="#events_page">Events</a></p>
+            <a href="{% url 'reservation' %}" id="button2">
+                <p id="button_text2">Make a reservation</p>
+            </a>
+        </section>
+    </aside>
+{% endblock %}
+
+{% block body %}
+    <div id="page1_bg" class="page_bg">
+        <div id="page1" class="page">
+            <img id="main" src="../../static/img/3.png" style="block">
+        </div>
+    </div>
+    <div class="b" id="about_page">
+        <div id="page3_bg" class="page_bg">
+            <div class="page a">
+                <div id="page2_main">
+                    <p style="font-size: 50px; font-weight: bold; margin: 0;">ABOUT</p>
+                </div>
+                <p>CARE is our first project, our inspiration and our lifelong love.</p>
+                <p>Before opening, we studied for a long time, traveled to other cities, met baristas from eminent coffee houses, and gained experience.
+                    Then it took a long time to choose a roaster for our coffee and a supplier of real fresh tea.
+                    After some time, we were lucky and we settled on our partners with whom we work to this day.</p>
+                <div id="button_make" style="height: auto; margin-top: 1vh; width: 100%; justify-content: flex-start;">
+
+                </div>
+            </div>
+
+        </div>
+        <div id="page4_bg" class="page_bg"></div>
+    </div>
+    <div class="b" id="menu_page">
+        <div id="page2_bg" class="page_bg"></div>
+        <div id="page3_bg" class="page_bg">
+            <div class="page a">
+                <div style="justify-content: flex-end;" id="page2_main">
+                    <p style="font-size: 50px; font-weight: bold; margin: 0;">MENU</p>
+                </div>
+                <p style="justify-content: flex-end;text-align: right;">The menu of the coffee house has a large selection of coffee and tea, various desserts, as well as freshly squeezed juices and sandwiches.
+                    The latest addition to the menu is waffles. We became addicted to them after trying them in Brussels while on vacation.</p>
+                <div id="button_make" style="height: auto; margin-top: 1vh; width: 100%; justify-content: flex-end;">
+                    <a href="{% url 'menu' %}" id="button2" style="border: solid 2px #000; color: #000; padding: 4px 0px">
+                        <p id="button_text">Menu</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="events_page">
+        <div class="hpage">
+            <div class="qpage">
+                <div class="qpages1">
+                    <div class="ppp">
+                        <p class="pp">Summer desert festival</p>
+                    </div>
+                </div>
+            </div>
+            <div class="qpage qpages2" id="qpage1"></div>
+        </div>
+        <div class="hpage">
+            <div class="qpage qpages2" id="qpage2"></div>
+            <div class="qpage">
+                <div class="qpages1">
+                    <p class="pp">Sales for the families!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
